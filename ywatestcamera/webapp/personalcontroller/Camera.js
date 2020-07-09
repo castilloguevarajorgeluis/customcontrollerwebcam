@@ -12,6 +12,7 @@ sap.ui.define([
 	var giInterval;
 	var goBusyDialog;
 	var CControl;
+	var gbFirstAccess = true;
 	CControl = Control.extend("ynstestcamera.ywatestcamera.personalcontroller.Camera", {
 
 		metadata: {
@@ -380,16 +381,28 @@ sap.ui.define([
 			return oCanvas;
 		},
 		
+		/**
+		 *@memberOf ynstestcamera.ywatestcamera.personalcontroller.Camera
+		 * @param {object} oObject for
+		 */
 		_fnDeviceStop1: function (oObject) {
-			oObject.stop();
+			if (oObject.readyState === "live") {
+				oObject.stop();
+			}
 			if (this.oStream) {
 				this.oStream = undefined;
 				delete this.oStream;
 			}
 		},
 		
+		/**
+		 *@memberOf ynstestcamera.ywatestcamera.personalcontroller.Camera
+		 * @param {object} oObject for
+		 */
 		_fnDeviceStop2: function (oObject) {
-			oObject.stop();
+			if (oObject.readyState === "live") {
+				oObject.stop();
+			}
 			if (this.oVideo) {
 				if (this.oVideo.srcObject) {
 					this.oVideo.srcObject = null;
@@ -409,7 +422,9 @@ sap.ui.define([
 			var bProccess = false;
 			this.setDeviceId("");
 			var fstop = function (oObject) {
-				oObject.stop();
+				if (oObject.readyState === "live") {
+					oObject.stop();
+				}
 				if (that.aDevices.length > 0) {
 					that.aDevices[0] = undefined;
 					that.aDevices.shift();
@@ -516,6 +531,14 @@ sap.ui.define([
 						oContrainDevices.video.deviceId = aDevicesCamFinal[i].deviceId;
 						// Modifica un atributo, esto provoca una renderización
 						that.setDeviceId(oContrainDevices.video.deviceId);
+						if (gbFirstAccess) {
+							if (!that._displayingVideo && "srcObject" in that.oVideo) {
+								navigator.mediaDevices
+									.getUserMedia(oContrainDevices)
+									.then(fPlayVideo)
+									.catch(fCathError);
+							}
+						}	
 						break;
 					}
 				}
@@ -540,7 +563,10 @@ sap.ui.define([
 						label: aDevicesCamFinal[i].label
 					};
 					if (!mDeviceCam.label) {
+						gbFirstAccess = true;
 						mDeviceCam.label = "WebCam[" + (i + 1) + "]";
+					} else {
+						gbFirstAccess = false;
 					}
 					aDevicesCam.push(mDeviceCam);
 					aDevices.push(mDeviceCam.label);
