@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta	charset="utf-8"
+				name="viewport" 
+				content="width=device-width, initial-scale=1.0">
+		<!--<script id="sap-ushell-bootstrap"
+				src="/test-resources/sap/ushell/bootstrap/sandbox.js" >
+			</script>-->
+		<title>ywatestcamera</title>
+		<script type="text/javascript">
+			window["sap-ushell-config"] = {
+				defaultRenderer : "fiori2",
+				applications: {
+					"BUILD-prototype": {
+						additionalInformation: "SAPUI5.Component=ynstestcamera.ywatestcamera",
+						applicationType: "URL",
+						url: "./",
+						description: "Test Camera",
+						title: "Test Camera"
+					}
+				}
+			};
+		</script>
+		<script id="sap-ui-bootstrap"
+				src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				data-sap-ui-theme="sap_belize"
+				data-sap-ui-resourceroots='{"ynstestcamera.ywatestcamera": "./"}'
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+				data-sap-ui-async="true"
+				data-sap-ui-frameOptions="trusted">
+		</script>
+		<link	rel="icon" 
+				type="image/ico"
+				href="../resources/sap/ca/ui/themes/base/img/favicon/F0790_Mng_Mrktg_Orch.ico"/>
+		<script>
+			window['sap-ui-config'] = window['sap-ui-config'] || {};
+			window['sap-ui-config'].language = navigator.language;
+			sap.ui.getCore().attachInit(function() {
+				// load and register Fiori2 icon font
+				jQuery.sap.require("sap.ushell.iconfonts");
+				sap.ushell.iconfonts.registerFiori2IconFont();
+				//sap.ushell.Container.createRenderer().placeAt("content");
+			});
+		</script>
+	</head>
+	<body	id="content"
+			class="sapUiBody">
+		<div	data-sap-ui-component 
+				data-name="ynstestcamera.ywatestcamera" 
+				data-id="container" 
+				data-settings='{"id" : "ywatestcamera"}'>
+		</div>
+	</body>
+</html>
