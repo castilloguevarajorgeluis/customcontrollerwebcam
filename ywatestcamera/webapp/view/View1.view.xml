@@ -19,7 +19,7 @@
 									snapshot=".onSnapshot"/>
 						<pc:Camera	id="camera2"
 									snapshot=".onSnapshot"/>
-						<!--<List	id="list1"
+						<List	id="list1"
 								headerText="{i18n>listHeader}"
 								growing="false"
 								items="{path: '/photos'}">
@@ -28,7 +28,7 @@
 										src="{src}"
 										densityAware="false"/>
 							</CustomListItem>
-						</List>-->
+						</List>
 						<Carousel	id="carousel"
 									loop="true">
 						</Carousel>
