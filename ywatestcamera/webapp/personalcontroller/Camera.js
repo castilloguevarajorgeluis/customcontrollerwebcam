@@ -518,10 +518,7 @@ sap.ui.define([
 				video: {
 					facingMode: "",	//"user"(Enfoca al usuario), "environment"(Enfoca opuesto al usuario)
 					width: {
-						max: sap.ui.Device.resize.width
-					},
-					height:{
-						max: sap.ui.Device.resize.height
+						max: (sap.ui.Device.resize.width - 32)
 					},
 					deviceId: this.getDeviceId()
 				}
