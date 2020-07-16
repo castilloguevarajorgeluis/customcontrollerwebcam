@@ -21,13 +21,13 @@
 									snapshot=".onSnapshot"/>
 						<List	id="list1"
 								headerText="{i18n>listHeader}"
-								growing="false"
-								items="{path: '/photos'}">
+								growing="false">
+								<!--items="{path: '/photos'}"
 							<CustomListItem>
 								<Image	alt="{i18n>imageAlt}"
 										src="{src}"
 										densityAware="false"/>
-							</CustomListItem>
+							</CustomListItem>-->
 						</List>
 						<Carousel	id="carousel"
 									loop="true">
