@@ -691,9 +691,9 @@ sap.ui.define([
 				//+ "sapThemeHighlight-asBackgroundColor "	//background of video (azul claro)
 				//+ "sapThemeText-asBackgroundColor "		//background of video (plomo oscuro)
 				+ "cameraCSSStyle" //border radius of video
-				+ "'/>";
+				+ "'></video>";
 			//var sCanvas = "<canvas style='display: none;'/>";
-			var sCanvas = "<canvas width='%w' height='%h' style='display: none; width: %pw; height: %ph;'/>";
+			var sCanvas = "<canvas width='%w' height='%h' style='display: none; width: %pw; height: %ph;'></canvas>";
 			sCanvas	.replace("%w", iVideoWidth)
 					.replace("%h", iVideoHeight)
 					.replace("%pw", oControl.getVideoWidth())
